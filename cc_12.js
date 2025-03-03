@@ -66,3 +66,33 @@ metricCardsArray.forEach((card) => {
     // Update the style (change the background color)
     card.style.backgroundColor = 'lightgreen'; // Change the background color
 });
+
+//Task 3: Dynamic Inventory Management – Adding and Removing Items
+console.log("Task 3 - Implemented Dynamic Inventory List")
+
+function addInventoryItem(itemName) {
+    //Created a new <li> element
+    const inventoryItem = document.createElement('li');
+
+    //Added a class and custom data attribute
+    inventoryItem.setAttribute('class', 'product-item');
+    inventoryItem.setAttribute('data-product', itemName);
+
+    //Populated the <li> with the item name
+    inventoryItem.textContent = itemName;
+
+    //Added a click event listener to remove the item when clicked
+    inventoryItem.addEventListener('click', () => {
+        removeInventoryItem(inventoryItem);
+    });
+
+    //Appended the new <li> to the inventory list
+    const inventoryList = document.getElementById('inventoryList');
+    inventoryList.appendChild(inventoryItem);
+}
+
+//Function to remove an inventory item
+function removeInventoryItem(item) {
+    const inventoryList = document.getElementById('inventoryList');
+    inventoryList.removeChild(item);
+}
