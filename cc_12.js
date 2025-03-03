@@ -96,3 +96,25 @@ function removeInventoryItem(item) {
     const inventoryList = document.getElementById('inventoryList');
     inventoryList.removeChild(item);
 }
+
+//Task 4: Business Customer Section – Handling Event Bubbling
+console.log("Task 4: Business Customer Section – Handling Event Bubbling")
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Select the parent container and customer cards
+    const customerSection = document.getElementById('customerSection');
+    const customerCards = document.querySelectorAll('.customer-card');
+
+    // Add click event listener to the parent container
+    customerSection.addEventListener('click', () => {
+        console.log('Customer section clicked');
+    });
+
+    // Add click event listeners to each customer card
+    customerCards.forEach((card) => {
+        card.addEventListener('click', (event) => {
+            console.log('Customer card clicked');
+            event.stopPropagation(); // Prevent event from bubbling up to the parent
+        });
+    });
+});
